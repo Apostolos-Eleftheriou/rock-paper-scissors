@@ -37,7 +37,12 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
         console.log("Your score = " + playerScore);
         console.log("Computer's score = " + computerScore);
-    }     
+    }  
+    if (playerScore > computerScore) {
+        console.log("You Win!")
+    } else {
+        console.log("You Lose!")
+    }   
 }
-        
+
 game();
