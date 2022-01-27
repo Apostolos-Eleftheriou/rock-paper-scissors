@@ -1,0 +1,54 @@
+html {
+    font-family: Allerta Stencil;
+    font-size: 36px;
+    background: url('images/background.png') bottom center;
+    background-size: auto;
+    /* background-repeat: no-repeat; */
+    /* background-color: #f7df1e; */
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    height: auto;
+    max-width: 100px;
+    border-radius: 20px;
+}
+
+button {
+    border-radius: 20px;
+}
+
+#container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+}
+
+#score-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 8px;
+    margin-bottom: 200px;
+}
+
+#btn-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 8px;
+    margin: 150px auto 60px auto;
+    gap: 30px;
+    align-items: center;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
