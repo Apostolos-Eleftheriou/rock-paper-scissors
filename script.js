@@ -2,6 +2,7 @@ let computerScore = 0;
 let playerScore = 0;
 // let playerSelection;
 // let computerSelection = computerPlay();
+let result = (document.createElement('div'));
 
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissors']
@@ -10,47 +11,42 @@ function computerPlay() {
 
 function playRound(playerSelection,computerSelection) {
     if (playerSelection === computerSelection) {
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = "It's a Tie!";
         container.appendChild(result);        
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
         playerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Win! Rock beats Scissors.';
         container.appendChild(result);        
+
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
         playerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Win! Paper beats Rock.';
         container.appendChild(result);
-        // result.classList.toggle('active');
     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
         playerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Win! Scissors beats Paper.';
         container.appendChild(result);
     } else if (computerSelection == 'rock' && playerSelection == 'scissors') {
         computerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Lose! Rock beats Scissors.';
         container.appendChild(result);        
     } else if (computerSelection == 'paper' && playerSelection == 'rock') {
         computerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Lose! Paper beats Rock.';
         container.appendChild(result);
+
     } else if (computerSelection == 'scissors' && playerSelection == 'paper') {
         computerScore++;
-        let result = (document.createElement('div'));
         result.classList.add('result');
         result.textContent = 'You Lose! Scissors beats Paper.';
         container.appendChild(result);
+
     } 
     
 }
