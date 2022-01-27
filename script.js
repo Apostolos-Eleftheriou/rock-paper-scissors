@@ -74,16 +74,26 @@ function gameScissors() {
 function gameOver() {
     if (playerScore === 5) {
         alert("Game Over! You Won!!")
-        result.textContent = "You won, Congratulations!! You may click on the images to start again"
+        result.textContent = "You won, Congratulations!! You may click on the images to start again."
         playerScore = 0;
         computerScore = 0;
     } else if (computerScore === 5) {
         alert("Game Over! You lost!!")
-        result.textContent = "You lost, better luck next time. You may click on the images to start again"
+        result.textContent = "You lost, better luck next time. You may click on the images to start again."
         playerScore = 0;
         computerScore = 0;
     }
 }
+
+
+function introMessage() {
+    result.classList.add('result');
+    result.textContent = 'Hello there! Welcome to my version of Rock Paper \
+    Scissors. Click on the images to begin playing.';
+    container.appendChild(result);
+}
+
+introMessage();
 
 const rock = document.querySelector('#rock');
 
