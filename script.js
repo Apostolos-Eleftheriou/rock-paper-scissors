@@ -3,7 +3,7 @@ let playerScore = 0;
 let result = (document.createElement('div'));
 
 function computerPlay() {
-    let choices = ['rock', 'paper', 'scissors']
+    let choices = ['Rock', 'Paper', 'Scissors']
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
@@ -12,60 +12,42 @@ function playRound(playerSelection,computerSelection) {
         result.classList.add('result');
         result.textContent = "It's a Tie!";
         container.appendChild(result);        
-    } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+    } else if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || (playerSelection == 'Paper' && computerSelection == 'Rock') 
+    || (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
         playerScore++;
         result.classList.add('result');
-        result.textContent = 'You Win! Rock beats Scissors.';
+        result.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
         container.appendChild(result);        
-    } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        playerScore++;
-        result.classList.add('result');
-        result.textContent = 'You Win! Paper beats Rock.';
-        container.appendChild(result);
-    } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        playerScore++;
-        result.classList.add('result');
-        result.textContent = 'You Win! Scissors beats Paper.';
-        container.appendChild(result);
-    } else if (computerSelection == 'rock' && playerSelection == 'scissors') {
+    } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock')
+    || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
         computerScore++;
         result.classList.add('result');
-        result.textContent = 'Computer Wins! Rock beats Scissors.';
+        result.textContent = `Computer Wins! ${computerSelection} beats ${playerSelection}.`;
         container.appendChild(result);        
-    } else if (computerSelection == 'paper' && playerSelection == 'rock') {
-        computerScore++;
-        result.classList.add('result');
-        result.textContent = 'Computer Wins! Paper beats Rock.';
-        container.appendChild(result);
-    } else if (computerSelection == 'scissors' && playerSelection == 'paper') {
-        computerScore++;
-        result.classList.add('result');
-        result.textContent = 'Computer Wins! Scissors beats Paper.';
-        container.appendChild(result);
-    } 
+    }
     
 }
 
 function gameRock() {
-        let playerSelection = 'rock';
+        let playerSelection = 'Rock';
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
         document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore; 
     gameOver();
 }
 function gamePaper() {
-        let playerSelection = 'paper';
+        let playerSelection = 'Paper';
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
         document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore;
     gameOver();
 }
 function gameScissors() {
-        let playerSelection = 'scissors';
+        let playerSelection = 'Scissors';
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
         document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore;   
     gameOver();
