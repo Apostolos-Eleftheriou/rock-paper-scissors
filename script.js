@@ -16,7 +16,7 @@ function playRound(playerSelection,computerSelection) {
     || (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
         playerScore++;
         result.classList.add('result');
-        result.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+        result.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
         container.appendChild(result);        
     } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock')
     || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
@@ -56,12 +56,12 @@ function gameScissors() {
 function gameOver() {
     if (playerScore === 5) {
         alert("Game Over! You Won!!")
-        result.textContent = "You won, Congratulations!! You may click on the images to start again."
+        result.textContent = "Congratulations, You Won! You may click on the images to start again."
         playerScore = 0;
         computerScore = 0;
     } else if (computerScore === 5) {
-        alert("Game Over! You lost!!")
-        result.textContent = "You lost, better luck next time. You may click on the images to start again."
+        alert("Game Over! You Lost!!")
+        result.textContent = "Bummer, You Lost. Better luck next time. You may click on the images to start again."
         playerScore = 0;
         computerScore = 0;
     }
