@@ -87,7 +87,23 @@ button:hover {
     padding: 6px;
     border-radius: 10px;
     max-width: 600px;
-    transition: 1s;
+    transition: 0.7s;
+    animation-name: result;
+    animation-duration: .8s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes result {
+    from {background-color: #222831;}
+    to {background-color: #ffc600;color: #111720; box-shadow: 0 0 1rem #ffc600;}
+  }
+.result:hover {
+    transform: scale(1.1);
+    border-color: #111720;
+    box-shadow: 0 0 1rem #ffc600;
+    background-color: #ffc600;
+    color: #111720;
 }
 
 footer {

@@ -88,4 +88,3 @@ paper.addEventListener('click', gamePaper);
 const scissors = document.querySelector('#scissors');
 
 scissors.addEventListener('click', gameScissors)
-
