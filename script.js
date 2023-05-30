@@ -11,22 +11,31 @@ function playRound(playerSelection,computerSelection) {
     if (playerSelection === computerSelection) {
         result.classList.add('result');
         result.textContent = "It's a Tie!";
-        container.appendChild(result);        
+        container.appendChild(result);   
+        $("#player-win-lose").text("Tie!").removeClass("winner").removeClass("loser").addClass("tie");  
+        $("#computer-win-lose").text("Tie!").removeClass("winner").removeClass("loser").addClass("tie");      
     } else if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || (playerSelection == 'Paper' && computerSelection == 'Rock') 
     || (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
         playerScore++;
         result.classList.add('result');
         result.textContent = `You Win! ${playerSelection} beats ${computerSelection}.`;
+        $("#player-win-lose").text("Winner!").addClass("winner").removeClass("loser").removeClass("tie");
+        $("#computer-win-lose").text("Loser!").removeClass("winner").addClass("loser").removeClass("tie");
         container.appendChild(result);        
     } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock')
     || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
         computerScore++;
         result.classList.add('result');
         result.textContent = `Computer Wins! ${computerSelection} beats ${playerSelection}.`;
+        $("#player-win-lose").text("Loser!").removeClass("winner").addClass("loser").removeClass("tie");
+        $("#computer-win-lose").text("Winner!").addClass("winner").removeClass("loser").removeClass("tie");
         container.appendChild(result);        
     }
     
 }
+let rockIcon = '<img src="images/rock.jpg">';
+let paperIcon = '<img src="images/paper.png">';
+let scissorIcon = '<img src="images/scissors.jpg">';
 
 function gameRock() {
         let playerSelection = 'Rock';
@@ -34,7 +43,16 @@ function gameRock() {
         playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
         document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore; 
-    gameOver();
+
+        $("#player-choice-icon").html(rockIcon);
+        if(computerSelection === 'Rock') {
+            $("#computer-choice-icon").html(rockIcon)
+        } else if (computerSelection === 'Scissors') {
+            $("#computer-choice-icon").html(scissorIcon)
+        } else {
+            $("#computer-choice-icon").html(paperIcon)
+        }
+        gameOver();
 }
 function gamePaper() {
         let playerSelection = 'Paper';
@@ -42,26 +60,63 @@ function gamePaper() {
         playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
         document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore;
-    gameOver();
+
+        $("#player-choice-icon").html(paperIcon);
+        if(computerSelection === 'Rock') {
+            $("#computer-choice-icon").html(rockIcon)
+        } else if (computerSelection === 'Scissors') {
+            $("#computer-choice-icon").html(scissorIcon)
+        } else {
+            $("#computer-choice-icon").html(paperIcon)
+        }
+        gameOver();
 }
 function gameScissors() {
         let playerSelection = 'Scissors';
         const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
         document.getElementById('player-score').innerText = "Your Score: " + playerScore;
-        document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore;   
-    gameOver();
-}
+        document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore; 
 
+        $("#player-choice-icon").html(scissorIcon);
+        if(computerSelection === 'Rock') {
+            $("#computer-choice-icon").html(rockIcon)
+        } else if (computerSelection === 'Scissors') {
+            $("#computer-choice-icon").html(scissorIcon)
+        } else {
+            $("#computer-choice-icon").html(paperIcon)
+        }
+        gameOver();
+}   
+
+$("#close-modal").on("click", function() {
+    $(".custom-modal").animate({"top": "-500px", "opacity": "0"});
+    $(".wrapper").removeClass("modal_backdrop");
+    $("#computer-choice-icon").html("");
+    $("#player-choice-icon").html("");
+    $("#player-win-lose").text("");
+    $("#computer-win-lose").text("");
+    $(".result").text("Click on the images to play again!");
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById('player-score').innerText = "Your Score: " + playerScore;
+    document.getElementById('computer-score').innerText = "Computer's Score: " + computerScore; 
+})
 function gameOver() {
     if (playerScore === 5) {
-        alert("Game Over! You Won!!")
-        result.textContent = "Congratulations, You Won! You may click on the images to start again."
+        $(".modal-title").text("Game Over!");
+        $(".modal-content").text("Congratulations, you won!");
+        $(".custom-modal").animate({"top": "30%", "opacity": "1"});
+        $(".wrapper").addClass("modal_backdrop");
+        $("#close-modal").text("HOORAY!");
         playerScore = 0;
         computerScore = 0;
     } else if (computerScore === 5) {
-        alert("Game Over! You Lost!!")
-        result.textContent = "Bummer, You Lost. Better luck next time. You may click on the images to start again."
+        $(".modal-title").text("Game Over!");
+        $(".wrapper").addClass("modal_backdrop");
+        $(".modal-content").text("Bummer, you lost. Better luck next time.");
+        $(".custom-modal").animate({"top": "30%", "opacity": "1"});
+        $("#close-modal").text("I'll get him this time!");
         playerScore = 0;
         computerScore = 0;
     }
